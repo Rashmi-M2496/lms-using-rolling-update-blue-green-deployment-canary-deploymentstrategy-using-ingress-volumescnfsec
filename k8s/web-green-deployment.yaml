@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: web-blue-server
+
+spec:
+  replicas: 1
+
+  selector:
+    matchLabels:
+      app: web-blue-server
+
+  template:
+    metadata:
+      labels:
+        app: web-blue-server
+
+    spec:
+      containers:
+        - name: web-blue-server
+
+          image:   898865654957.dkr.ecr.ap-south-1.amazonaws.com/webapp:v2
+          imagePullPolicy: Always
+
+          ports:
+            - containerPort: 80
